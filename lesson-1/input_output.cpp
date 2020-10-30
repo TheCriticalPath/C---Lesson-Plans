@@ -16,7 +16,7 @@ int main (){
     // Output 
     std::cout << "The sum of " << v1 << " and " <<  v2 << " is " << v1 + v2 << std::endl;
 
-    std::cout << std::numeric_limits<int>::min();
+    //std::cout << std::numeric_limits<int>::min();
 
     return 0;
 }
