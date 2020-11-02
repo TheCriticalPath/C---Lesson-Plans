@@ -80,11 +80,11 @@ char* addCommasToNumber(int num){
 }
 
 int requestPositiveInteger(){
-    int input = 0;
-    while (input <= 0){
+    int input = -1;
+    while (input < 0){
         cout << "Please enter a positive integer that indicates the number of terms to calculate in the Leibniz series:" << endl;
         cin >> input;
-        if (input <= 0){
+        if (input < 0){
             cout << input << " is not a positive integer.  Try Again!" << endl << endl;
         }
     }
@@ -93,11 +93,11 @@ int requestPositiveInteger(){
 
 double valueOfLeibnizSeries(double nlimit){
     double pi = 0.0;
-    int iteration = 0;
-    while(iteration <= nlimit){
-        pi += 4 * ( pow(-1,iteration) / ((2* iteration) + 1)); 
-        // printf("%1.15f\n", pi);
-        iteration++;
+    int n = 0;
+    while(n <= nlimit){
+        pi = pi + (4 * ( pow(-1,n) / ((2*n) + 1))); 
+        printf("%1.15f\n", pi);
+        n++;
     }
     return pi;
 }
