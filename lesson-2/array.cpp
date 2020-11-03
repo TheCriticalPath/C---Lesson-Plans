@@ -15,7 +15,7 @@ int main(){         // c   r
 */
 
     //lcv means loop control variable
-    for(int lcv = 0; lcv <= 10; lcv++){
+    for(int lcv = 0; lcv < 10; lcv++){
         arrCharacters[lcv] = 'A';
     }
     cout << arrCharacters << endl;
