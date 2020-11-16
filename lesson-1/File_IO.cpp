@@ -1,10 +1,10 @@
-#include <iostream>
-#include <fstream>
-#include <vector>
-#include <iterator>
-#include <algorithm>
-#include <math.h>
-#include <ctime>
+#include <iostream> // Needed for stdout
+#include <fstream>  // Needed for File stream
+#include <vector>   // Needed for vector
+#include <iterator> // Needed for iterator
+#include <algorithm>// Needed for ?
+#include <math.h>   //
+#include <ctime>    // Needed for time() random number generator
 
 #define FILENAME "./simpleFile.txt"
 using namespace std;
@@ -15,15 +15,23 @@ void readFile (string,vector<string>&);
 int main(){
     //open the file
     vector<string> vctFileContents;
-    readFile(FILENAME,vctFileContents);
+    readFile("./simpleFile.txt",vctFileContents);
+    
     //Seed the random number generator
     srand((int) time(0));
-    
+    double position = 0.0;
     cout << vctFileContents.size() << endl;
     vctFileContents.shrink_to_fit();
     vctFileContents.begin();
-    double position = rand() % vctFileContents.size();
-    cout << vctFileContents[position] << endl;
+    vector<double> vctPosition;
+    for (int i = 0; i < 50;i++){
+        do{
+           position = rand() % vctFileContents.size();
+        }while(find(vctPosition.begin(), vctPosition.end(), position) != vctPosition.end());
+        cout << vctFileContents[position] << endl;
+        vctPosition.push_back(position);
+
+    }
     vctFileContents.clear();
 
 }
