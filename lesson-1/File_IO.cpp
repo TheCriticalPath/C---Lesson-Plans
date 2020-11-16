@@ -16,6 +16,7 @@ int main(){
     //open the file
     vector<string> vctFileContents;
     readFile(FILENAME,vctFileContents);
+    //Seed the random number generator
     srand((int) time(0));
     
     cout << vctFileContents.size() << endl;

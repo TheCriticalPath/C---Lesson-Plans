@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string>
-#include <algorithm>
 #include <stdlib.h>
 
 // This compiler will put in a 'Q' everywhere that you use the CHAR_EXIT.
@@ -16,39 +15,43 @@ void generatePerfectNumbers(int);
 void pressEnterKeyToContinue();
 
 // Main Program
-//Input: None
-
+// Input: None
+// Output: None
+// Returns 0 when complete.
 int main(){
     // Use a character variable to capture the users choice
     char chrUserChoice;
     // Use a do...while loop because we want this to run at least once.
     do{
         chrUserChoice = printMenu();
+        //print a new line
         cout << endl;
-        // What does the switch statement do?  How else could I have written this.
+        // What does the switch statement do?  
+        // How else could I have written this.
         switch(chrUserChoice){
             case '1':
                 generateFibonacciNumbers();
                 break; // We must break here.  This exits the switch statement
             case '2':
-                generatePerfectNumbers(1000);
-                break;
-            case CHAR_EXIT:
-                cout << "Exit!" << endl;
-                break;
+                generatePerfectNumbers(500000);
+                break; // We must break here.  This exits the switch statement
+            case '3':
+                //cout << "Exit!" << endl;
+                break; // We must break here.  This exits the switch statement
             default:
                 cout << "I wasn't expecting a " << chrUserChoice << endl;
-                break;
-        }
+                break; // We must break here.  This exits the switch statement
+        }// End of switch(chrUserChoice)
 
-    }while(chrUserChoice != CHAR_EXIT);
+    }while(chrUserChoice != '3');
     cout << "Goodbye!" << endl;
     return 0;
 }
 
-//NAME: printMenu()
+//NAME: printMenu
 //Input: NONE
 //Output: String representing the users choice.
+//Descr:  Prints out the menu.  This routine contains the code that ensures a valid response
 char printMenu(){
     // Use a boolean to track the validity of the response.
     bool blnTryAgain = false;
@@ -88,23 +91,25 @@ char printMenu(){
 bool isValidChoice(char chrChoice){
     return ( chrChoice == '1' ||
              chrChoice == '2' ||
-             chrChoice == CHAR_EXIT);
+             chrChoice == '3');
 }
 
 
 void generateFibonacciNumbers(){
     int n = 1;
     int n1 = 1;
-    int n2 = n + n1;
+    int n2 = 2;
 
     printf("Fibonacci # %d is: %d\n", 1, n);
     printf("Fibonacci # %d is: %d\n", 2, n1);
 
     for(int lcv = 3; lcv <= 20; lcv++){
-       n = n1;
-       n1 = n2;
        n2 = n + n1;
        printf("Fibonacci # %d is: %d\n", lcv, n2);
+       // Store N1 into N
+       // Store N2 into N1
+       n = n1;
+       n1 = n2;
     }
     pressEnterKeyToContinue();
 }
@@ -121,11 +126,16 @@ void generatePerfectNumbers(int limit){
     printf("Here are all the perfect numbers less than %d\n", limit);
     for(int lcv = 4; lcv<=limit;lcv++){
         sum = 0;
+        //          cout << lcv << ":";
+
         for (int i = 1; i <= lcv/2; i++){
-            if(lcv % i == 0){
+            if(lcv % i == 0)
+            {
+            //    cout << i << ",";
                 sum += i;
             }
         }
+       // cout << endl;
         if (sum == lcv){
             cout << sum << endl;
         }
