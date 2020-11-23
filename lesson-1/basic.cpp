@@ -1,4 +1,5 @@
 #include <iostream>
+
 #include <string.h>
 using namespace std;
 
@@ -9,13 +10,21 @@ string passByPointer(string&);
 int main(){
     string strValue = "Edwin";
     string strPointer = "Jackson";
+    char lineOfData[] = "One,Two,Three,Four,Five";
+    char* putchar;
+    putchar = strtok(lineOfData,",");
+    while (putchar != NULL){
+        printf("%s\n",putchar);
+        putchar = strtok(NULL,",");
+    }
 
+/*
     passByValue(strValue);
     passByPointer(strPointer);
 
     cout << strValue << endl;
     cout << strPointer << endl;
-
+*/
     return 0;
 }
 

@@ -115,6 +115,7 @@ void generateFibonacciNumbers(){
 }
 
 void pressEnterKeyToContinue(){
+    system("pause");
     cout << endl << "Press ENTER key to continue . . . " << endl;
     cin.ignore();
     cin.get();
